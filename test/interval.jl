@@ -21,4 +21,9 @@ using Test
     f = in(iv)
     @test f(0.5) == true
 
+    # 2.3
+    iv_empty = Interval(0, -1)
+    @test isempty(iv_empty)
+    
+        
 end
