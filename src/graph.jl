@@ -1,6 +1,7 @@
 export get_direct_neighbor, get_reachable_node, get_connected_component
 
-get_direct_neighbor(graph, node) = Set(union(node, graph[node]))
+get_direct_neighbor(graph::AbstractVector, node) = Set(union(node, graph[node]))
+get_direct_neighbor(graph::AbstractMatrix, node) = Set(union(node, findall(graph[node, :])))
 
 function get_reachable_node(graph, node, reached = Set([node]))
     neighbor = get_direct_neighbor(graph, node)
