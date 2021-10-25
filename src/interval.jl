@@ -12,4 +12,5 @@ Base.maximum(iv::Interval) = iv.max
 Base.in(item::Real, iv::Interval) = item >= iv.min && item <= iv.max
 Base.in(iv::Interval) = y::Real -> in(y, iv)
 
+Base.isempty(iv::Interval) = iv.min > iv.max
 
