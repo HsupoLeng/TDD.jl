@@ -34,4 +34,8 @@ using Test
     @test get_reachable_node(directed_graph, 1) == Set([1, 2, 3, 4, 5])
     @test get_reachable_node(directed_graph, 3) == Set([3])
     @test get_reachable_node(directed_graph, 4) == Set([4, 5])
+
+    # 1.3 
+    @test get_connected_component(undirected_graph) == Set([Set([1, 2, 3]), Set([4, 5])])
+    @test get_connected_component(directed_graph) == Set([Set([1, 2, 3, 4, 5])])
 end
