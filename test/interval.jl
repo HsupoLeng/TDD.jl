@@ -46,4 +46,12 @@ using Test
     @test isempty(intersect(iv_no_intersect, iv)) == true
     @test isempty(intersect(iv_empty, iv)) == true
     @test ∩(iv_not_subset, iv) == Interval(0.1, 1)
+
+    # 2.6
+    str_out = '\"' * '\u301a' * "0.0 1.0" * '\u301b' * '\"'
+    @test repr(iv) == str_out
+    iobuf = IOBuffer()
+    print(iobuf, iv) 
+    @test String(take!(iobuf)) == str_out
+    @test repr(iv_empty) == '\"' * "∅" * '\"'
 end
