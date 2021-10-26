@@ -36,4 +36,14 @@ using Test
     @test ⊆(iv_subset, iv) == true
     @test ⊈(iv_not_subset, iv) == true
     @test issubset([0 1], iv) == true
+
+    # 2.5
+    iv_intersect = Interval(0.5, 1.5)
+    iv_no_intersect = Interval(2, Inf)
+    @test intersect(iv_intersect, iv) == Interval(0.5, 1)
+    @test intersect(iv_subset, iv) == iv_subset
+    @test intersect(iv_not_subset, iv) == Interval(0.1, 1)
+    @test isempty(intersect(iv_no_intersect, iv)) == true
+    @test isempty(intersect(iv_empty, iv)) == true
+    @test ∩(iv_not_subset, iv) == Interval(0.1, 1)
 end
