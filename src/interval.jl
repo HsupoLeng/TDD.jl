@@ -1,4 +1,4 @@
-export Interval, minimum, maximum, in, isempty, issubset, intersect
+export Interval, minimum, maximum, in, isempty, issubset, intersect, show
 
 struct Interval{T<:Real}
     min :: T
@@ -18,4 +18,7 @@ Base.issubset(a::Array{<:Real}, b::Interval) = all(in(b), a)
 Base.issubset(a::Interval, b::Interval) = isempty(a) ? true : ((a.min in b) && (a.max in b))
 
 Base.intersect(a::Interval, b::Interval) = Interval(max(a.min, b.min), min(a.max, b.max))
+
+Base.show(io::IO, iv::Interval) = isempty(iv) ? show(io, "∅") : show(io, '\u301a' * "$(iv.min) $(iv.max)" * '\u301b')
+Base.show(iv::Interval) = show(stdout, iv)
 
