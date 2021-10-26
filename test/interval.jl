@@ -27,5 +27,13 @@ using Test
     @test isempty(iv_empty)
     
     # 2.4
-
+    iv_subset = Interval(0, 0.5)
+    iv_not_subset = Interval(0.1, Inf)
+    @test issubset(iv_subset, iv) == true
+    @test issubset(iv_not_subset, iv) == false
+    @test issubset(iv, iv) == true
+    @test issubset(iv_empty, iv) == true
+    @test ⊆(iv_subset, iv) == true
+    @test ⊈(iv_not_subset, iv) == true
+    @test issubset([0 1], iv) == true
 end
